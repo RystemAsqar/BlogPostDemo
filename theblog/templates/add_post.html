@@ -9,15 +9,18 @@
 <br>
 <br>
 
+{% if user.is_authenticated %}
+    <div class="form-group">
+        
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+        
 
-<div class="form-group">
-    
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-    
-
-    <button class="btn btn-secondary">Post</button>
-</div>
+        <button class="btn btn-secondary">Post</button>
+    </div>
+{% else %}
+    <h1>You're not allowed here!</h1>
+{% endif %}
 
 {% endblock %}

@@ -11,13 +11,17 @@
 
 <h3>Delete: {{ post.title }}</h3>
 
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        <strong>Are you sure?</strong>
-        <br>
-        <button class="btn btn-secondary">DeletePost</button>
-        <!-- <button class="btn btn-secondary" href = "{% url 'home' %}">Back</a></button> -->
-    </div>
+{% if user.is_authenticated %}
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            <strong>Are you sure?</strong>
+            <br>
+            <button class="btn btn-secondary">DeletePost</button>
+            <!-- <button class="btn btn-secondary" href = "{% url 'home' %}">Back</a></button> -->
+        </div>
+{% else %}  
+  <h1>You're not allowed here!</h1>
+{% endif %}
 
 {% endblock %}
