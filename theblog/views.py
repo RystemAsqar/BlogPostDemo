@@ -1,13 +1,18 @@
+from unicodedata import category
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post
+from .models import Post,Category
 from .forms import PostForm,EditForm
 
 class HomeView(ListView): 
     model = Post
     template_name = 'home.html'
     ordering = ['-id']
+
+def CategoryView(request, cats):
+    category_posts = Post.objects.filter(category=cats)
+    return render(request, 'categories.html', {'cats': cats.title(), 'category_posts':category_posts})
 
 class ArticleDetailView(DetailView):
     model = Post
@@ -18,6 +23,11 @@ class AddPostView(CreateView):
     form_class = PostForm
     template_name = 'add_post.html'
     # fields = '__all__'
+
+class AddCategoryView(CreateView):
+    model = Category
+    template_name = 'add_category.html'
+    fields = '__all__'
 
 class UpdatePostView(UpdateView): 
     model = Post
