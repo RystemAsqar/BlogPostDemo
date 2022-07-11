@@ -18,3 +18,9 @@
   - Authentication 
   - Escape HTML
   
+## Test-3
+  ### CategoryList
+  - CreatingCategoryModel 
+  - Updating Forms -> choice_list
+  - CreatingCategory.html -> templates 
+  - Creating CategoryView -> views.py
