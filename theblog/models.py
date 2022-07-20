@@ -20,7 +20,9 @@ class Post(models.Model):
     title_tag = models.CharField(max_length=255, default="Test")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
+    # post_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default='coding')
+    likes = models.ManyToManyField(User,related_name='blog_posts')
 
     def __str__(self):
         return self.title + '|' + str(self.author) 

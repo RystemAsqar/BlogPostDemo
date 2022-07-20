@@ -10,16 +10,21 @@
 <br>
 
 {% if user.is_authenticated %}
-    <div class="form-group">
-        
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-        
+    {% if user.id == post.author.id %}
+        <div class="form-group">
+            
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+            
 
-            <button class="btn btn-secondary">Update</button>
-            <!-- <button class="btn btn-secondary" href = "{% url 'home' %}">Back</a></button> -->
-        </div>
+                <button class="btn btn-secondary">Update</button>
+                <!-- <button class="btn btn-secondary" href = "{% url 'home' %}">Back</a></button> -->
+            </div>
+    {% else  %}
+            You're not allowed here! Please try again!
+    {% endif %}
+    
 {% else %}
     <h1>You are not allowed here!</h1>
 
