@@ -24,3 +24,6 @@
   - Updating Forms -> choice_list
   - CreatingCategory.html -> templates 
   - Creating CategoryView -> views.py
+  
+## Test-4[demo]
+  - CategoriesListView -> AddPost page
