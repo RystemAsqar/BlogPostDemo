@@ -17,7 +17,7 @@
     </small><br>
     <hr> 
     <br>
-{{ post.body }}
+{{ post.body|safe }}
 
 
 <br> <br>
@@ -28,9 +28,9 @@
 <br>
 <form action="{% url 'like_post' post.pk %}" method="POST">
     {% csrf_token %}
-    <button type="submit", name="post_id",value="{{ post.id }}", class="btn btn-primary btn-sm" >
+    <!-- <button type="submit", name='post_id',value="{{ post.id }}", class="btn btn-primary btn-sm" >
         Like
-    </button>
+    </button> -->
 </form>
 
 {% endblock %}
